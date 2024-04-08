@@ -1,0 +1,17 @@
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\bin\Debug\Keyboard Macro.exe
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\bin\Debug\Keyboard Macro.pdb
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.csproj.AssemblyReference.cache
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard_Macro.Properties.Resources.resources
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.csproj.GenerateResource.cache
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.csproj.CoreCompileInputs.cache
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.exe
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.pdb
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard_Macro.form_Main.resources
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard_Macro.Form_Action.resources
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard_Macro.Form_ReadKey.resources
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard_Macro.Form_TargetWindow.resources
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\bin\Debug\WindowsInput.dll
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\bin\Debug\WindowsInput.xml
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.csproj.CopyComplete
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\bin\Debug\Keyboard Macro.exe.config
+E:\!!!My Shid\My Application\Keyboard Macro\Keyboard Macro\obj\Debug\Keyboard Macro.csproj.SuggestedBindingRedirects.cache
