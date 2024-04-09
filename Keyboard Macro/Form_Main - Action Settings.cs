@@ -7,7 +7,8 @@ namespace Keyboard_Macro
 {
     public partial class Form_Main : Form
     {
-        private void OnAddOrEditAction(object sender, EventArgs e)
+        // Open form to add or edit action
+        private void btn_AddOrEditAction_Click(object sender, EventArgs e)
         {
             bool isEditting = (Button)sender == this.btn_EditAction;
 
@@ -15,7 +16,8 @@ namespace Keyboard_Macro
             form_Action.ShowDialog();
         }
 
-        private void OnDeleteAction(object sender, EventArgs e)
+        // Delete selected action
+        private void btn_DeleteAction_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Delete selected action?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (result == DialogResult.No)
@@ -26,11 +28,12 @@ namespace Keyboard_Macro
             this.dgv_Action.Rows.RemoveAt(deletedIndex);
         }
 
-        private void OnClearActions(object sender, EventArgs e)
+        private void btn_ClearActions_Click(object sender, EventArgs e)
         {
             this.ClearActions();
         }
 
+        // Clear all actions
         bool ClearActions()
         {
             DialogResult result = MessageBox.Show("Clear ALL actions?", "Confirm Clear", MessageBoxButtons.YesNo);
@@ -45,7 +48,8 @@ namespace Keyboard_Macro
             return true;
         }
 
-        private void OnMoveActionUpOrDown(object sender, EventArgs e)
+        // Move action up or down the list
+        private void btn_ActionUpOrDown_Click(object sender, EventArgs e)
         {
             bool isMoveUp = (Button)sender == this.btn_ActionUp;
             int selectedIndex = this.dgv_Action.SelectedRows[0].Index;

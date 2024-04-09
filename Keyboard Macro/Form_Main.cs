@@ -14,9 +14,9 @@ namespace Keyboard_Macro
         public Form_Main()
         {
             InitializeComponent();
-            
         }
 
+        // Enable/disable buttons when row is selected
         private void OnRowSelected(object sender, EventArgs e)
         {
             int selectedIndex = -1;
@@ -30,6 +30,7 @@ namespace Keyboard_Macro
             this.btn_ActionDown.Enabled = selectedIndex < this.dgv_Action.RowCount - 1;
         }
 
+        // Enable buttons when row is added, and select new row
         private void OnRowAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             this.btn_ClearActions.Enabled = true;
@@ -38,32 +39,17 @@ namespace Keyboard_Macro
             this.dgv_Action.Rows[e.RowIndex].Selected = true;
         }
 
+        // Disable buttons when no row left
         private void OnRowRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             this.btn_ClearActions.Enabled = this.dgv_Action.RowCount > 0;
             this.btn_SaveActions.Enabled = this.dgv_Action.RowCount > 0;
         }
 
-        public Process selectedProcess;
-        private void OnSetTargetWindow(object sender, EventArgs e)
+        // Opens form to select target process to play macro on
+        private void btn_SetTargetWindow_Click(object sender, EventArgs e)
         {
             (new Form_TargetWindow(this)).ShowDialog();
-
-            if (this.selectedProcess == null)
-            {
-                this.tb_ProcessName.Text = "";
-                this.tb_WindowTitle.Text = "";
-                return;
-            }
-
-            this.tb_ProcessName.Text = selectedProcess.ProcessName;
-            this.tb_WindowTitle.Text = selectedProcess.MainWindowTitle;
-        }
-
-        private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //if (this.simulationTask != null)
-            //    this.simulationTask.Dispose();
         }
     }
 }

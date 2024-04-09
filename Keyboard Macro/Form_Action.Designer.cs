@@ -35,7 +35,7 @@
             this.cb_ActionType = new System.Windows.Forms.ComboBox();
             this.btn_SetKeyAction = new System.Windows.Forms.Button();
             this.nud_Duration = new System.Windows.Forms.NumericUpDown();
-            this.btn_Apply = new System.Windows.Forms.Button();
+            this.btn_Ok = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Duration)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             this.cb_ActionType.Name = "cb_ActionType";
             this.cb_ActionType.Size = new System.Drawing.Size(195, 21);
             this.cb_ActionType.TabIndex = 0;
-            this.cb_ActionType.SelectedIndexChanged += new System.EventHandler(this.OnSelectActionType);
+            this.cb_ActionType.SelectedIndexChanged += new System.EventHandler(this.cb_ActionType_SelectedIndexChanged);
             // 
             // btn_SetKeyAction
             // 
@@ -94,7 +94,7 @@
             this.btn_SetKeyAction.TabIndex = 1;
             this.btn_SetKeyAction.Text = "Set";
             this.btn_SetKeyAction.UseVisualStyleBackColor = true;
-            this.btn_SetKeyAction.Click += new System.EventHandler(this.OnSetKey);
+            this.btn_SetKeyAction.Click += new System.EventHandler(this.btn_SetKeyAction_Click);
             // 
             // nud_Duration
             // 
@@ -114,17 +114,17 @@
             0,
             196608});
             // 
-            // btn_Apply
+            // btn_Ok
             // 
-            this.btn_Apply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Apply.ForeColor = System.Drawing.Color.Black;
-            this.btn_Apply.Location = new System.Drawing.Point(220, 111);
-            this.btn_Apply.Name = "btn_Apply";
-            this.btn_Apply.Size = new System.Drawing.Size(75, 23);
-            this.btn_Apply.TabIndex = 3;
-            this.btn_Apply.Text = "Apply";
-            this.btn_Apply.UseVisualStyleBackColor = true;
-            this.btn_Apply.Click += new System.EventHandler(this.OnApply);
+            this.btn_Ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Ok.ForeColor = System.Drawing.Color.Black;
+            this.btn_Ok.Location = new System.Drawing.Point(220, 111);
+            this.btn_Ok.Name = "btn_Ok";
+            this.btn_Ok.Size = new System.Drawing.Size(75, 23);
+            this.btn_Ok.TabIndex = 3;
+            this.btn_Ok.Text = "Ok";
+            this.btn_Ok.UseVisualStyleBackColor = true;
+            this.btn_Ok.Click += new System.EventHandler(this.btn_Ok_Click);
             // 
             // btn_Cancel
             // 
@@ -136,7 +136,7 @@
             this.btn_Cancel.TabIndex = 4;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Click += new System.EventHandler(this.onCancel);
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // Form_Action
             // 
@@ -145,7 +145,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(299, 138);
             this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_Apply);
+            this.Controls.Add(this.btn_Ok);
             this.Controls.Add(this.nud_Duration);
             this.Controls.Add(this.btn_SetKeyAction);
             this.Controls.Add(this.cb_ActionType);
@@ -159,7 +159,7 @@
             this.Name = "Form_Action";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Form_Action";
+            this.Text = "Set Action";
             ((System.ComponentModel.ISupportInitialize)(this.nud_Duration)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -175,7 +175,7 @@
         private System.Windows.Forms.ComboBox cb_ActionType;
         private System.Windows.Forms.Button btn_SetKeyAction;
         private System.Windows.Forms.NumericUpDown nud_Duration;
-        private System.Windows.Forms.Button btn_Apply;
+        private System.Windows.Forms.Button btn_Ok;
         private System.Windows.Forms.Button btn_Cancel;
     }
 }

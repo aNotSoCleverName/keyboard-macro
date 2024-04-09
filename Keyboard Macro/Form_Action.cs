@@ -21,14 +21,14 @@ namespace Keyboard_Macro
             this.isEditting = inIsEditting;
             this.dgv_Action = inDgv_Action;
 
-            //Add action types to combo box
+            // Add action types to combo box
             foreach (string str_ActionType in Enum.GetNames(typeof(Class_Action.Enum_ActionType)))
             {
                 this.cb_ActionType.Items.Add(str_ActionType);
             }
             this.cb_ActionType.SelectedIndex = 0;
 
-            //Set existing values to controls
+            // Set existing values to controls
             if (this.isEditting)
             {
                 this.action = Class_Action.KeyActions[this.dgv_Action.SelectedRows[0].Index];
@@ -39,7 +39,8 @@ namespace Keyboard_Macro
             }
         }
 
-        private void OnSelectActionType(object sender, EventArgs e)
+        // Enable/disable key/duration fields depending on action
+        private void cb_ActionType_SelectedIndexChanged(object sender, EventArgs e)
         {
             Class_Action.Enum_ActionType selectedActionType = (Class_Action.Enum_ActionType)Enum.Parse(typeof(Class_Action.Enum_ActionType), this.cb_ActionType.Text);
             switch (selectedActionType)
@@ -71,19 +72,20 @@ namespace Keyboard_Macro
             }
         }
 
-        private void OnSetKey(object sender, EventArgs e)
+        // Open new form to read key
+        private void btn_SetKeyAction_Click(object sender, EventArgs e)
         {
             (new Form_ReadKey(this.tb_Key)).ShowDialog();
         }
 
-        private void OnApply(object sender, EventArgs e)
+        private void btn_Ok_Click(object sender, EventArgs e)
         {
-            //Get value from controls
+            // Get values from controls
             string newActionType = this.cb_ActionType.Text;
             string newKey = this.tb_Key.Text;
             string newDuration = this.nud_Duration.Value.ToString();
 
-            //If action requires key, but key is not set, return
+            // If action requires key, but key is not set, return
             if (newActionType != Class_Action.Enum_ActionType.Delay.ToString() &&
                 this.tb_Key.Text == "")
             {
@@ -91,7 +93,7 @@ namespace Keyboard_Macro
                 return;
             }
 
-            //If adding
+            // If adding action
             DataGridViewRow selectedRow;
             if (!this.isEditting)
             {
@@ -103,7 +105,7 @@ namespace Keyboard_Macro
                 selectedRow = new DataGridViewRow();
                 selectedRow.CreateCells(this.dgv_Action);
             }
-            //If editting
+            // If editting action
             else
             {
                 //List
@@ -116,14 +118,15 @@ namespace Keyboard_Macro
             }
 
             this.action.CleanActionRow(selectedRow);
-            //This has to be done after setting the value. Otherwise, it fucks with the index
+
+            // This has to be done after setting the value. Otherwise, it fucks with the index
             if (!this.isEditting)
                 this.dgv_Action.Rows.Add(selectedRow);
 
             this.Close();
         }
 
-        private void onCancel(object sender, EventArgs e)
+        private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
