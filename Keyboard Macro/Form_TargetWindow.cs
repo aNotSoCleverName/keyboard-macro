@@ -19,12 +19,12 @@ namespace Keyboard_Macro
         public Form_TargetWindow(Form_Main inForm_Main)
         {
             InitializeComponent();
-            this.SetWindowTitles();
+            this.LoadDgvWithProcesses();
 
             this.form_Main = inForm_Main;
         }
 
-        void SetWindowTitles()
+        void LoadDgvWithProcesses()
         {
             foreach (Process process in list_Process)
             {
@@ -43,7 +43,8 @@ namespace Keyboard_Macro
 
                 this.dgv_Windows.Rows.Add(newRow);
             }
-            this.dgv_Windows.ClearSelection();
+
+            this.dgv_Windows.ClearSelection();      // Is supposed to make no row selected, but doesn't work?
         }
 
         Icon tryGetIcon(Process inProcess)
@@ -58,12 +59,12 @@ namespace Keyboard_Macro
             }
         }
 
+        // Set the value of selectedProcess variable from form_Main
         void SelectProcess()
         {
             DataGridViewRow selectedRow = this.dgv_Windows.SelectedRows[0];
-            string selectedWindowName = selectedRow.Cells[this.dgvCol_WindowTitle.Name].Value.ToString();
-            form_Main.selectedProcess = list_Process.FirstOrDefault(process => process.MainWindowTitle.Equals(selectedWindowName));
-
+            form_Main.tb_ProcessName.Text = selectedRow.Cells[this.dgvCol_ProcessName.Name].Value.ToString();
+            form_Main.tb_WindowTitle.Text = selectedRow.Cells[this.dgvCol_WindowTitle.Name].Value.ToString(); ;
             this.Close();
         }
 

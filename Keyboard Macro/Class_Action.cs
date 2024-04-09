@@ -27,6 +27,7 @@ namespace Keyboard_Macro
             this.Duration = inDuration;
         }
 
+        // Set default value to empty string if needed
         public void CleanActionRow(DataGridViewRow inRow)
         {
             inRow.Cells[0].Value = this.ActionType;
