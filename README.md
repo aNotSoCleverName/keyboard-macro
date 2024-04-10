@@ -1,3 +1,3 @@
 "# keyboard-macro" 
-TESTING -- REVERT GIT 2
-Git should be reverted to 2 commits before this one
+TESTING -- REVERT GIT
+Git should be reversed to a commit before this one
