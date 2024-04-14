@@ -56,22 +56,23 @@ namespace Keyboard_Macro
         }
 
         // Set hotkey for playing macro
-        string prevHotkey = "";
+        string prevStrHotkey = "";
         private void cb_PlayKey_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Unhook previous hotkey here
-            HotkeyHook.Class_HotkeyHookManager.UnsetHotkey(prevHotkey);
-            prevHotkey = cb_PlayKey.Text;
+            // Unhook previous hotkey
+            {
+                HotkeyHook.Enum_SupportedKeys prevHotkey = HotkeyHook.Class_SupportedKeys.GetEnumNameFromString(prevStrHotkey);
+                HotkeyHook.Class_HookManager.UnsetHotkey(prevHotkey);
+                prevStrHotkey = cb_PlayKey.Text;
+            }
 
-            uint threadId = HotkeyHook.Class_HotkeyHookManager.GetCurrentThreadId();
-            HotkeyHook.Class_HotkeyHookManager.SetHotkey(threadId,
-                                                         cb_PlayKey.Text,
-                                                         this.TogglePlayStopSimulation);
+            HotkeyHook.Enum_SupportedKeys newHotkey = HotkeyHook.Class_SupportedKeys.GetEnumNameFromString(cb_PlayKey.Text);
+            HotkeyHook.Class_HookManager.SetHotkeyGlobal(newHotkey, this.TogglePlayStopSimulation);
         }
 
         private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HotkeyHook.Class_HotkeyHookManager.UnsetAllHotkeys();
+            HotkeyHook.Class_HookManager.UnsetAllHotkeys();
         }
     }
 }

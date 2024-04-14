@@ -54,6 +54,7 @@ namespace Keyboard_Macro
 
         private static void InformNoWindowFound()
         {
+            SetForegroundWindow(Process.GetCurrentProcess().MainWindowHandle);
             Console.WriteLine("Window not found");
             MessageBox.Show("Window not found");
         }
