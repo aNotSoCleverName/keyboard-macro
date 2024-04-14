@@ -12,11 +12,13 @@ namespace Keyboard_Macro
     // Singleton class used to simulate key strokes
     public static class SClass_KeySimulation
     {
-        static Button _btn_PlayStop;
-        static bool _isPlayingSimulation = false;
-        static bool _isStopSimulation = false;
+        public static Button Btn_PlayStop { get; set; }
+        public static bool IsPlaying { get; set; } = false;
+        public static bool IsStopSimulation { get; set; } = false;
 
-        public static void StartSimulation(Button inBtn_PlayStop, decimal inLoopIntervalInSec, bool inIsRepeatFinite, int inRepeatTimes)
+        public static Task SimulationTask;
+
+        public static async void StartSimulation(Button inBtn_PlayStop, decimal inLoopIntervalInSec, bool inIsRepeatFinite, int inRepeatTimes)
         {
             Btn_PlayStop = inBtn_PlayStop;
 
@@ -24,8 +26,14 @@ namespace Keyboard_Macro
             IsPlaying = true;
             IsStopSimulation = false;
 
-            Thread simulationThread = new Thread(() => SimulateKeys(inLoopIntervalInSec, inIsRepeatFinite, inRepeatTimes));
-            simulationThread.Start();
+            SimulationTask = new Task(() => SimulateKeys(inLoopIntervalInSec, inIsRepeatFinite, inRepeatTimes));
+            SimulationTask.Start();
+            await SimulationTask;
+
+            SimulationTask.Dispose();
+            SimulationTask = null;
+
+            StopSimulation();
         }
 
         public static void StopSimulation()
@@ -34,7 +42,6 @@ namespace Keyboard_Macro
 
             Btn_PlayStop.Text = "Play";
             IsPlaying = false;
-            IsStopSimulation = true;
         }
 
         private static void SimulateKeys(decimal inLoopIntervalInSec, bool inIsRepeatFinite, int inRepeatTimes)
@@ -72,7 +79,7 @@ namespace Keyboard_Macro
                     }
 
                     if (IsStopSimulation)
-                        return;
+                        break;
                 }
                 repeatTimes++;
                 SClass_KeyStroke.Wait(delayBetweenLoop);
@@ -81,14 +88,12 @@ namespace Keyboard_Macro
                 if (inIsRepeatFinite &&
                     repeatTimes >= inRepeatTimes + 1)
                 {
-                    StopSimulation();
+                    //StopSimulation();
+                    //return;
+
+                    break;
                 }
             }
         }
-
-
-        public static Button Btn_PlayStop { get => _btn_PlayStop; set => _btn_PlayStop = value; }
-        public static bool IsPlaying { get => _isPlayingSimulation; set => _isPlayingSimulation = value; }
-        public static bool IsStopSimulation { get => _isStopSimulation; set => _isStopSimulation = value; }
     }
 }

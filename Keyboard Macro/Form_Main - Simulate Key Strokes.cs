@@ -26,9 +26,9 @@ namespace Keyboard_Macro
         private void TogglePlayStopSimulation(List<object> inObject)
         {
             // If simulation is already playing, stop
-            if (SClass_KeySimulation.IsPlaying)
+            if (SClass_KeySimulation.IsPlaying || SClass_KeySimulation.SimulationTask != null)
             {
-                SClass_KeySimulation.StopSimulation();
+                SClass_KeySimulation.IsStopSimulation = true;
                 return;
             }
 
