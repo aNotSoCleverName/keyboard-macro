@@ -4,8 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
+using HotkeyHook;
 
 namespace Keyboard_Macro
 {
@@ -50,6 +53,25 @@ namespace Keyboard_Macro
         private void btn_SetTargetWindow_Click(object sender, EventArgs e)
         {
             (new Form_TargetWindow(this)).ShowDialog();
+        }
+
+        // Set hotkey for playing macro
+        string prevHotkey = "";
+        private void cb_PlayKey_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Unhook previous hotkey here
+            HotkeyHook.Class_HotkeyHookManager.UnsetHotkey(prevHotkey);
+            prevHotkey = cb_PlayKey.Text;
+
+            uint threadId = HotkeyHook.Class_HotkeyHookManager.GetCurrentThreadId();
+            HotkeyHook.Class_HotkeyHookManager.SetHotkey(threadId,
+                                                         cb_PlayKey.Text,
+                                                         this.TogglePlayStopSimulation);
+        }
+
+        private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HotkeyHook.Class_HotkeyHookManager.UnsetAllHotkeys();
         }
     }
 }

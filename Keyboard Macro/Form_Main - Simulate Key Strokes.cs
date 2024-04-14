@@ -20,6 +20,18 @@ namespace Keyboard_Macro
 
         private void btn_PlayStop_Click(object sender, EventArgs e)
         {
+            TogglePlayStopSimulation(new List<object>());   
+        }
+
+        private void TogglePlayStopSimulation(List<object> inObject)
+        {
+            // If simulation is already playing, stop
+            if (SClass_KeySimulation.IsPlaying)
+            {
+                SClass_KeySimulation.StopSimulation();
+                return;
+            }
+
             // Set selectedProcess
             Process selectedProcess;
             {
@@ -34,17 +46,10 @@ namespace Keyboard_Macro
                 return;
             }
 
-            // If simulation is already playing, stop
-            if (SClass_KeySimulation.IsPlaying)
-            {
-                SClass_KeySimulation.StopSimulation();
-                return;
-            }
-
             IntPtr hWnd = selectedProcess.MainWindowHandle;
             SetForegroundWindow(hWnd);
 
-            SClass_KeySimulation.StartSimulation(this.btn_PlayStop, nud_LoopInterval.Value, rb_RepeatFinite.Checked, (int) nud_RepeatFinite.Value);
+            SClass_KeySimulation.StartSimulation(this.btn_PlayStop, this.nud_LoopInterval.Value, this.rb_RepeatFinite.Checked, (int)this.nud_RepeatFinite.Value);
         }
 
         private static void InformNoWindowFound()

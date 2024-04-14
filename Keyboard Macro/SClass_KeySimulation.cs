@@ -13,7 +13,7 @@ namespace Keyboard_Macro
     public static class SClass_KeySimulation
     {
         static Button _btn_PlayStop;
-        static bool _isPlaying = false;
+        static bool _isPlayingSimulation = false;
         static bool _isStopSimulation = false;
 
         public static void StartSimulation(Button inBtn_PlayStop, decimal inLoopIntervalInSec, bool inIsRepeatFinite, int inRepeatTimes)
@@ -72,10 +72,7 @@ namespace Keyboard_Macro
                     }
 
                     if (IsStopSimulation)
-                    {
-                        StopSimulation();
-                        break;
-                    }
+                        return;
                 }
                 repeatTimes++;
                 SClass_KeyStroke.Wait(delayBetweenLoop);
@@ -91,7 +88,7 @@ namespace Keyboard_Macro
 
 
         public static Button Btn_PlayStop { get => _btn_PlayStop; set => _btn_PlayStop = value; }
-        public static bool IsPlaying { get => _isPlaying; set => _isPlaying = value; }
+        public static bool IsPlaying { get => _isPlayingSimulation; set => _isPlayingSimulation = value; }
         public static bool IsStopSimulation { get => _isStopSimulation; set => _isStopSimulation = value; }
     }
 }
