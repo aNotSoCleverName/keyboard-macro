@@ -31,13 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.gb_RecordPlay = new System.Windows.Forms.GroupBox();
             this.cb_PlayKey = new System.Windows.Forms.ComboBox();
-            this.cb_RecordKey = new System.Windows.Forms.ComboBox();
             this.label_Play = new System.Windows.Forms.Label();
-            this.label_Record = new System.Windows.Forms.Label();
             this.gb_Macro = new System.Windows.Forms.GroupBox();
-            this.btn_Record = new System.Windows.Forms.Button();
             this.btn_PlayStop = new System.Windows.Forms.Button();
             this.gb_ActionSetting = new System.Windows.Forms.GroupBox();
             this.btn_LoadActions = new System.Windows.Forms.Button();
@@ -66,7 +62,6 @@
             this.label_ProcessName = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.gb_RecordPlay.SuspendLayout();
             this.gb_Macro.SuspendLayout();
             this.gb_ActionSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Action)).BeginInit();
@@ -74,21 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud_LoopInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_RepeatFinite)).BeginInit();
             this.SuspendLayout();
-            // 
-            // gb_RecordPlay
-            // 
-            this.gb_RecordPlay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gb_RecordPlay.Controls.Add(this.cb_PlayKey);
-            this.gb_RecordPlay.Controls.Add(this.cb_RecordKey);
-            this.gb_RecordPlay.Controls.Add(this.label_Play);
-            this.gb_RecordPlay.Controls.Add(this.label_Record);
-            this.gb_RecordPlay.ForeColor = System.Drawing.Color.White;
-            this.gb_RecordPlay.Location = new System.Drawing.Point(396, 13);
-            this.gb_RecordPlay.Name = "gb_RecordPlay";
-            this.gb_RecordPlay.Size = new System.Drawing.Size(196, 122);
-            this.gb_RecordPlay.TabIndex = 0;
-            this.gb_RecordPlay.TabStop = false;
-            this.gb_RecordPlay.Text = "Shortcut";
             // 
             // cb_PlayKey
             // 
@@ -107,44 +87,29 @@
             "F10",
             "F11",
             "F12"});
-            this.cb_PlayKey.Location = new System.Drawing.Point(40, 87);
+            this.cb_PlayKey.Location = new System.Drawing.Point(437, 322);
             this.cb_PlayKey.Name = "cb_PlayKey";
-            this.cb_PlayKey.Size = new System.Drawing.Size(144, 21);
+            this.cb_PlayKey.Size = new System.Drawing.Size(131, 21);
             this.cb_PlayKey.TabIndex = 5;
             this.cb_PlayKey.SelectedIndexChanged += new System.EventHandler(this.cb_PlayKey_SelectedIndexChanged);
             // 
-            // cb_RecordKey
-            // 
-            this.cb_RecordKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_RecordKey.FormattingEnabled = true;
-            this.cb_RecordKey.Location = new System.Drawing.Point(40, 39);
-            this.cb_RecordKey.Name = "cb_RecordKey";
-            this.cb_RecordKey.Size = new System.Drawing.Size(144, 21);
-            this.cb_RecordKey.TabIndex = 4;
-            // 
             // label_Play
             // 
-            this.label_Play.Location = new System.Drawing.Point(9, 69);
+            this.label_Play.AutoSize = true;
+            this.label_Play.Location = new System.Drawing.Point(387, 325);
             this.label_Play.Name = "label_Play";
-            this.label_Play.Size = new System.Drawing.Size(45, 13);
+            this.label_Play.Size = new System.Drawing.Size(44, 13);
             this.label_Play.TabIndex = 3;
-            this.label_Play.Text = "Play:";
+            this.label_Play.Text = "Hotkey:";
             this.label_Play.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label_Record
-            // 
-            this.label_Record.Location = new System.Drawing.Point(9, 21);
-            this.label_Record.Name = "label_Record";
-            this.label_Record.Size = new System.Drawing.Size(45, 13);
-            this.label_Record.TabIndex = 1;
-            this.label_Record.Text = "Record:";
             // 
             // gb_Macro
             // 
             this.gb_Macro.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gb_Macro.Controls.Add(this.btn_Record);
+            this.gb_Macro.Controls.Add(this.cb_PlayKey);
+            this.gb_Macro.Controls.Add(this.label_Play);
             this.gb_Macro.Controls.Add(this.btn_PlayStop);
             this.gb_Macro.Controls.Add(this.gb_ActionSetting);
             this.gb_Macro.Controls.Add(this.dgv_Action);
@@ -155,18 +120,6 @@
             this.gb_Macro.TabIndex = 1;
             this.gb_Macro.TabStop = false;
             this.gb_Macro.Text = "Key Macro";
-            // 
-            // btn_Record
-            // 
-            this.btn_Record.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Record.ForeColor = System.Drawing.Color.Black;
-            this.btn_Record.Location = new System.Drawing.Point(390, 320);
-            this.btn_Record.Name = "btn_Record";
-            this.btn_Record.Size = new System.Drawing.Size(178, 23);
-            this.btn_Record.TabIndex = 14;
-            this.btn_Record.Text = "Record";
-            this.btn_Record.UseVisualStyleBackColor = true;
-            this.btn_Record.Visible = false;
             // 
             // btn_PlayStop
             // 
@@ -367,7 +320,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 123);
+            this.groupBox1.Size = new System.Drawing.Size(580, 123);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -377,7 +330,7 @@
             this.tb_WindowTitle.Location = new System.Drawing.Point(114, 43);
             this.tb_WindowTitle.Name = "tb_WindowTitle";
             this.tb_WindowTitle.ReadOnly = true;
-            this.tb_WindowTitle.Size = new System.Drawing.Size(187, 20);
+            this.tb_WindowTitle.Size = new System.Drawing.Size(389, 20);
             this.tb_WindowTitle.TabIndex = 12;
             // 
             // label_WindowTitle
@@ -394,13 +347,13 @@
             this.tb_ProcessName.Location = new System.Drawing.Point(114, 17);
             this.tb_ProcessName.Name = "tb_ProcessName";
             this.tb_ProcessName.ReadOnly = true;
-            this.tb_ProcessName.Size = new System.Drawing.Size(187, 20);
+            this.tb_ProcessName.Size = new System.Drawing.Size(389, 20);
             this.tb_ProcessName.TabIndex = 10;
             // 
             // nud_LoopInterval
             // 
-            this.nud_LoopInterval.DecimalPlaces = 3;
-            this.nud_LoopInterval.Location = new System.Drawing.Point(114, 95);
+            this.nud_LoopInterval.DecimalPlaces = 2;
+            this.nud_LoopInterval.Location = new System.Drawing.Point(352, 69);
             this.nud_LoopInterval.Minimum = new decimal(new int[] {
             1,
             0,
@@ -417,7 +370,7 @@
             // 
             // lb_LoopInterval
             // 
-            this.lb_LoopInterval.Location = new System.Drawing.Point(6, 97);
+            this.lb_LoopInterval.Location = new System.Drawing.Point(244, 71);
             this.lb_LoopInterval.Name = "lb_LoopInterval";
             this.lb_LoopInterval.Size = new System.Drawing.Size(102, 13);
             this.lb_LoopInterval.TabIndex = 8;
@@ -426,14 +379,14 @@
             // 
             // nud_RepeatFinite
             // 
-            this.nud_RepeatFinite.Location = new System.Drawing.Point(213, 69);
+            this.nud_RepeatFinite.Location = new System.Drawing.Point(129, 94);
             this.nud_RepeatFinite.Name = "nud_RepeatFinite";
             this.nud_RepeatFinite.Size = new System.Drawing.Size(70, 20);
             this.nud_RepeatFinite.TabIndex = 3;
             // 
             // rb_RepeatFinite
             // 
-            this.rb_RepeatFinite.Location = new System.Drawing.Point(197, 71);
+            this.rb_RepeatFinite.Location = new System.Drawing.Point(113, 96);
             this.rb_RepeatFinite.Name = "rb_RepeatFinite";
             this.rb_RepeatFinite.Size = new System.Drawing.Size(123, 17);
             this.rb_RepeatFinite.TabIndex = 2;
@@ -466,7 +419,7 @@
             // 
             this.btn_SetTargetWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SetTargetWindow.ForeColor = System.Drawing.Color.Black;
-            this.btn_SetTargetWindow.Location = new System.Drawing.Point(307, 17);
+            this.btn_SetTargetWindow.Location = new System.Drawing.Point(509, 17);
             this.btn_SetTargetWindow.Name = "btn_SetTargetWindow";
             this.btn_SetTargetWindow.Size = new System.Drawing.Size(65, 46);
             this.btn_SetTargetWindow.TabIndex = 0;
@@ -502,14 +455,13 @@
             this.ClientSize = new System.Drawing.Size(604, 559);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gb_Macro);
-            this.Controls.Add(this.gb_RecordPlay);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keyboard Macro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
-            this.gb_RecordPlay.ResumeLayout(false);
             this.gb_Macro.ResumeLayout(false);
+            this.gb_Macro.PerformLayout();
             this.gb_ActionSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Action)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -521,10 +473,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gb_RecordPlay;
         private System.Windows.Forms.Label label_Play;
-        private System.Windows.Forms.Label label_Record;
         private System.Windows.Forms.GroupBox gb_Macro;
         private System.Windows.Forms.DataGridView dgv_Action;
         private System.Windows.Forms.GroupBox gb_ActionSetting;
@@ -542,11 +491,9 @@
         private System.Windows.Forms.NumericUpDown nud_RepeatFinite;
         private System.Windows.Forms.Button btn_PlayStop;
         private System.Windows.Forms.Button btn_ClearActions;
-        private System.Windows.Forms.Button btn_Record;
         private System.Windows.Forms.Button btn_LoadActions;
         private System.Windows.Forms.Button btn_SaveActions;
         private System.Windows.Forms.ComboBox cb_PlayKey;
-        private System.Windows.Forms.ComboBox cb_RecordKey;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_ActionType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Duration;
