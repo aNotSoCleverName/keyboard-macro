@@ -137,8 +137,6 @@ namespace Keyboard_Macro
                     }
                 }
             }
-
-
         }
 
         private static XmlWriterSettings writerSettings = new XmlWriterSettings

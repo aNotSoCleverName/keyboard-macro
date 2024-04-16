@@ -22,5 +22,17 @@ namespace Keyboard_Macro.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public global::HotkeyHook.Enum_SupportedKeys playStopHotkey {
+            get {
+                return ((global::HotkeyHook.Enum_SupportedKeys)(this["playStopHotkey"]));
+            }
+            set {
+                this["playStopHotkey"] = value;
+            }
+        }
     }
 }

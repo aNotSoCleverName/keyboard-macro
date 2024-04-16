@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cb_PlayKey = new System.Windows.Forms.ComboBox();
             this.label_Play = new System.Windows.Forms.Label();
             this.gb_Macro = new System.Windows.Forms.GroupBox();
@@ -75,6 +75,7 @@
             this.cb_PlayKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_PlayKey.FormattingEnabled = true;
             this.cb_PlayKey.Items.AddRange(new object[] {
+            "None",
             "F1",
             "F2",
             "F3",
@@ -274,8 +275,8 @@
             // 
             // dgvCol_ActionType
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_ActionType.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_ActionType.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCol_ActionType.FillWeight = 40F;
             this.dgvCol_ActionType.HeaderText = "Action Type";
             this.dgvCol_ActionType.Name = "dgvCol_ActionType";
@@ -284,8 +285,8 @@
             // 
             // dgvCol_Key
             // 
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_Key.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_Key.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvCol_Key.FillWeight = 30F;
             this.dgvCol_Key.HeaderText = "Key";
             this.dgvCol_Key.Name = "dgvCol_Key";
@@ -294,8 +295,8 @@
             // 
             // dgvCol_Duration
             // 
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_Duration.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_Duration.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvCol_Duration.FillWeight = 30F;
             this.dgvCol_Duration.HeaderText = "Duration (sec)";
             this.dgvCol_Duration.Name = "dgvCol_Duration";
@@ -460,6 +461,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keyboard Macro";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Main_FormClosing);
+            this.Load += new System.EventHandler(this.Form_Main_Load);
             this.gb_Macro.ResumeLayout(false);
             this.gb_Macro.PerformLayout();
             this.gb_ActionSetting.ResumeLayout(false);

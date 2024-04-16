@@ -19,6 +19,19 @@ namespace Keyboard_Macro
             InitializeComponent();
         }
 
+        private void Form_Main_Load(object sender, EventArgs e)
+        {
+            this.cb_PlayKey.Text = SClass_Config.LoadHotkey().ToString();
+        }
+
+        private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HotkeyHook.Enum_SupportedKeys playStopHotkey = HotkeyHook.Class_SupportedKeys.GetEnumNameFromString(cb_PlayKey.Text);
+            SClass_Config.SaveHotkey(playStopHotkey);
+
+            HotkeyHook.Class_HookManager.UnsetAllHotkeys();
+        }
+
         // Enable/disable buttons when row is selected
         private void OnRowSelected(object sender, EventArgs e)
         {
@@ -68,11 +81,6 @@ namespace Keyboard_Macro
 
             HotkeyHook.Enum_SupportedKeys newHotkey = HotkeyHook.Class_SupportedKeys.GetEnumNameFromString(cb_PlayKey.Text);
             HotkeyHook.Class_HookManager.SetHotkeyGlobal(newHotkey, this.TogglePlayStopSimulation);
-        }
-
-        private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            HotkeyHook.Class_HookManager.UnsetAllHotkeys();
         }
     }
 }
