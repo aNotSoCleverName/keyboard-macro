@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -14,22 +15,47 @@ namespace Keyboard_Macro
 {
     public partial class Form_Main : Form
     {
+        // Gets name of application, minus the ".exe"
+        public static string appName = AppDomain.CurrentDomain.FriendlyName.Substring(0, AppDomain.CurrentDomain.FriendlyName.Length-4);
+
         public Form_Main()
         {
             InitializeComponent();
         }
 
+        const string projectsDirPath = ".\\Projects\\";
+        const string tempProjectPath = projectsDirPath + ".temp.xml";
         private void Form_Main_Load(object sender, EventArgs e)
         {
             this.cb_PlayKey.Text = SClass_Config.LoadHotkey().ToString();
+
+            // Load temp project
+            if (File.Exists(tempProjectPath))
+            {
+                SClass_SaveLoad.CurrentPath = projectsDirPath;
+                SClass_SaveLoad.Load(tempProjectPath,
+                                     this.tb_ProcessName, this.tb_WindowTitle,
+                                     this.rb_RepeatInfinite, this.rb_RepeatFinite, this.nud_RepeatFinite,
+                                     this.nud_LoopInterval,
+                                     this.dgv_Action);
+            }
         }
 
         private void Form_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Save hotkey
             HotkeyHook.Enum_SupportedKeys playStopHotkey = HotkeyHook.Class_SupportedKeys.GetEnumNameFromString(cb_PlayKey.Text);
             SClass_Config.SaveHotkey(playStopHotkey);
 
+            // Unset hotkey
             HotkeyHook.Class_HookManager.UnsetAllHotkeys();
+
+            // Save current project as temp
+            SClass_SaveLoad.CurrentPath = projectsDirPath;
+            SClass_SaveLoad.Save(tempProjectPath,
+                                    this.tb_ProcessName.Text, this.tb_WindowTitle.Text,
+                                    this.rb_RepeatFinite.Checked, this.nud_RepeatFinite.Value,
+                                    this.nud_LoopInterval.Value);
         }
 
         // Enable/disable buttons when row is selected
