@@ -20,10 +20,10 @@ namespace Keyboard_Macro
 
         private void btn_PlayStop_Click(object sender, EventArgs e)
         {
-            TogglePlayStopSimulation(new List<object>());   
+            TogglePlayStopSimulation(new Dictionary<string, object>());   
         }
 
-        private void TogglePlayStopSimulation(List<object> inObject)
+        private void TogglePlayStopSimulation(Dictionary<string, object> inObject)
         {
             // If simulation is already playing, stop
             if (SClass_KeySimulation.IsPlaying || SClass_KeySimulation.SimulationTask != null)
