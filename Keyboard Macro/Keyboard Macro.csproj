@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Class_Action.cs" />
     <Compile Include="SClass_Config.cs" />
+    <Compile Include="Class_SupportedKey.cs" />
     <Compile Include="SClass_KeySimulation.cs" />
     <Compile Include="SClass_KeyStroke.cs" />
     <Compile Include="SClass_SaveLoad.cs" />

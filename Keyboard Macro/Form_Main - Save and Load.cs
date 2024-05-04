@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace Keyboard_Macro
                                  this.tb_ProcessName.Text, this.tb_WindowTitle.Text,
                                  this.rb_RepeatFinite.Checked, this.nud_RepeatFinite.Value,
                                  this.nud_LoopInterval.Value);
+            this.SetSaveFileToFormText(Path.GetFileName(this.saveFileDialog1.FileName));
         }
 
         private void btn_LoadActions_Click(object sender, EventArgs e)
@@ -50,7 +52,12 @@ namespace Keyboard_Macro
                                  this.rb_RepeatInfinite, this.rb_RepeatFinite, this.nud_RepeatFinite,
                                  this.nud_LoopInterval,
                                  this.dgv_Action);
-            this.Text = Form_Main.appName + " - " + this.openFileDialog1.FileName;
+            this.SetSaveFileToFormText(Path.GetFileName(this.openFileDialog1.FileName));
+        }
+
+        void SetSaveFileToFormText(string inFileName)
+        {
+            this.Text = Form_Main.appName + " - " + inFileName;
         }
     }
 }

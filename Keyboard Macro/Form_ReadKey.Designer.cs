@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label_PressAnyKey = new System.Windows.Forms.Label();
+            this.timer_KeyNotSupported = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label_PressAnyKey
@@ -42,6 +44,11 @@
             this.label_PressAnyKey.TabIndex = 0;
             this.label_PressAnyKey.Text = "Press Any Key";
             this.label_PressAnyKey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer_KeyNotSupported
+            // 
+            this.timer_KeyNotSupported.Interval = 500;
+            this.timer_KeyNotSupported.Tick += new System.EventHandler(this.timer_KeyNotSupported_Tick);
             // 
             // Form_ReadKey
             // 
@@ -63,5 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Label label_PressAnyKey;
+        private System.Windows.Forms.Timer timer_KeyNotSupported;
     }
 }

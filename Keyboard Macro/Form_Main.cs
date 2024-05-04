@@ -21,6 +21,7 @@ namespace Keyboard_Macro
         public Form_Main()
         {
             InitializeComponent();
+            Console.WriteLine(Keys.NumPad0.ToString());
         }
 
         const string projectsDirPath = ".\\Projects\\";

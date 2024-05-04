@@ -7,7 +7,7 @@ namespace Keyboard_Macro
 {
     public class Class_Action
     {
-        static List<Class_Action> _keyActions = new List<Class_Action>();
+        public static List<Class_Action> KeyActions { get; set; } = new List<Class_Action>();
 
         public enum Enum_ActionType
         {
@@ -16,19 +16,21 @@ namespace Keyboard_Macro
             Delay,
         }
 
-        string _actionType;
-        string _key;
-        string _duration;
+        public string ActionType { get; set; }
+        public string Key { get; set; }
+        public string StrVk { get; set; }
+        public string Duration { get; set; }
 
-        public Class_Action(string inActionType, string inKey, string inDuration)
+        public Class_Action(string inActionType, string inKey, string inStrVk, string inDuration)
         {
             this.ActionType = inActionType;
             this.Key = inKey;
+            this.StrVk = inStrVk;
             this.Duration = inDuration;
         }
 
-        // Set default value to empty string if needed
-        public void CleanActionRow(DataGridViewRow inRow)
+        // Set value to empty string if needed
+        public void ActionToRow(DataGridViewRow inRow)
         {
             inRow.Cells[0].Value = this.ActionType;
 
@@ -39,12 +41,10 @@ namespace Keyboard_Macro
             inRow.Cells[2].Value = this.Duration;
             if (this.ActionType == Class_Action.Enum_ActionType.Press.ToString())
                 inRow.Cells[2].Value = "";
-        }
 
-        //Get/set
-        public static List<Class_Action> KeyActions { get => _keyActions; set => _keyActions = value; }
-        public string ActionType { get => _actionType; set => _actionType = value; }
-        public string Key { get => _key; set => _key = value; }
-        public string Duration { get => _duration; set => _duration = value; }
+            inRow.Cells[3].Value = this.StrVk;
+            if (this.ActionType == Class_Action.Enum_ActionType.Delay.ToString())
+                inRow.Cells[3].Value = "";
+        }
     }
 }

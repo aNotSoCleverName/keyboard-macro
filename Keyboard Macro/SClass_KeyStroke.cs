@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
 
@@ -7,15 +9,17 @@ namespace Keyboard_Macro
     public static class SClass_KeyStroke
     {
         static InputSimulator inputSimulator = new InputSimulator();
-        public static void PressKey(string inStringKey)
+        public static void PressKey(string inStrVk)
         {
-            VirtualKeyCode vkCode = GetVKCodeFromStringKey(inStringKey);
+            //VirtualKeyCode vkCode = Class_SupportedKey.GetVkCodeFromStringKey(inStringKey);
+            VirtualKeyCode vkCode = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), inStrVk);
             inputSimulator.Keyboard.KeyPress(vkCode);
         }
 
-        public static void HoldKey(string inStringKey, int inDurationInMiliSec)
+        public static void HoldKey(string inStrVk, int inDurationInMiliSec)
         {
-            VirtualKeyCode vkCode = GetVKCodeFromStringKey(inStringKey);
+            //VirtualKeyCode vkCode = Class_SupportedKey.GetVkCodeFromStringKey(inStringKey);
+            VirtualKeyCode vkCode = (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), inStrVk);
             inputSimulator.Keyboard.KeyDown(vkCode);
             inputSimulator.Keyboard.Sleep(inDurationInMiliSec);
             inputSimulator.Keyboard.KeyUp(vkCode);
@@ -36,13 +40,6 @@ namespace Keyboard_Macro
         {
             decimal decDuration = Decimal.Parse(inDurationInSec);
             return GetDurationInMiliSec(decDuration);
-        }
-
-        // This function uses data type from InputSimulator package
-        static VirtualKeyCode GetVKCodeFromStringKey(string inStrKey)
-        {
-            string str_Vk = "VK_" + inStrKey;
-            return (VirtualKeyCode)Enum.Parse(typeof(VirtualKeyCode), str_Vk);
         }
     }
 }

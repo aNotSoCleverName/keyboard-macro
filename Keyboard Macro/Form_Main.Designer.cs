@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cb_PlayKey = new System.Windows.Forms.ComboBox();
             this.label_Play = new System.Windows.Forms.Label();
             this.gb_Macro = new System.Windows.Forms.GroupBox();
@@ -45,9 +46,6 @@
             this.btn_EditAction = new System.Windows.Forms.Button();
             this.btn_AddAction = new System.Windows.Forms.Button();
             this.dgv_Action = new System.Windows.Forms.DataGridView();
-            this.dgvCol_ActionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCol_Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvCol_Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_WindowTitle = new System.Windows.Forms.TextBox();
             this.label_WindowTitle = new System.Windows.Forms.Label();
@@ -62,6 +60,10 @@
             this.label_ProcessName = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.dgvCol_ActionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCol_Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCol_Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvCol_VKCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gb_Macro.SuspendLayout();
             this.gb_ActionSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Action)).BeginInit();
@@ -72,6 +74,7 @@
             // 
             // cb_PlayKey
             // 
+            this.cb_PlayKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_PlayKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_PlayKey.FormattingEnabled = true;
             this.cb_PlayKey.Items.AddRange(new object[] {
@@ -96,6 +99,7 @@
             // 
             // label_Play
             // 
+            this.label_Play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label_Play.AutoSize = true;
             this.label_Play.Location = new System.Drawing.Point(387, 325);
             this.label_Play.Name = "label_Play";
@@ -260,7 +264,8 @@
             this.dgv_Action.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvCol_ActionType,
             this.dgvCol_Key,
-            this.dgvCol_Duration});
+            this.dgvCol_Duration,
+            this.dgvCol_VKCode});
             this.dgv_Action.Location = new System.Drawing.Point(10, 19);
             this.dgv_Action.MultiSelect = false;
             this.dgv_Action.Name = "dgv_Action";
@@ -272,36 +277,6 @@
             this.dgv_Action.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.OnRowAdded);
             this.dgv_Action.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.OnRowRemoved);
             this.dgv_Action.SelectionChanged += new System.EventHandler(this.OnRowSelected);
-            // 
-            // dgvCol_ActionType
-            // 
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_ActionType.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCol_ActionType.FillWeight = 40F;
-            this.dgvCol_ActionType.HeaderText = "Action Type";
-            this.dgvCol_ActionType.Name = "dgvCol_ActionType";
-            this.dgvCol_ActionType.ReadOnly = true;
-            this.dgvCol_ActionType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvCol_Key
-            // 
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_Key.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvCol_Key.FillWeight = 30F;
-            this.dgvCol_Key.HeaderText = "Key";
-            this.dgvCol_Key.Name = "dgvCol_Key";
-            this.dgvCol_Key.ReadOnly = true;
-            this.dgvCol_Key.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvCol_Duration
-            // 
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.dgvCol_Duration.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvCol_Duration.FillWeight = 30F;
-            this.dgvCol_Duration.HeaderText = "Duration (sec)";
-            this.dgvCol_Duration.Name = "dgvCol_Duration";
-            this.dgvCol_Duration.ReadOnly = true;
-            this.dgvCol_Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // groupBox1
             // 
@@ -328,6 +303,8 @@
             // 
             // tb_WindowTitle
             // 
+            this.tb_WindowTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_WindowTitle.Location = new System.Drawing.Point(114, 43);
             this.tb_WindowTitle.Name = "tb_WindowTitle";
             this.tb_WindowTitle.ReadOnly = true;
@@ -345,6 +322,8 @@
             // 
             // tb_ProcessName
             // 
+            this.tb_ProcessName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_ProcessName.Location = new System.Drawing.Point(114, 17);
             this.tb_ProcessName.Name = "tb_ProcessName";
             this.tb_ProcessName.ReadOnly = true;
@@ -448,6 +427,46 @@
             this.openFileDialog1.Filter = "XML Files (*.xml)|*.xml|All Files (*.*)|*.*";
             this.openFileDialog1.InitialDirectory = ".\\\\Projects";
             // 
+            // dgvCol_ActionType
+            // 
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_ActionType.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvCol_ActionType.FillWeight = 30F;
+            this.dgvCol_ActionType.HeaderText = "Action Type";
+            this.dgvCol_ActionType.Name = "dgvCol_ActionType";
+            this.dgvCol_ActionType.ReadOnly = true;
+            this.dgvCol_ActionType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvCol_Key
+            // 
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_Key.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvCol_Key.FillWeight = 40F;
+            this.dgvCol_Key.HeaderText = "Key";
+            this.dgvCol_Key.Name = "dgvCol_Key";
+            this.dgvCol_Key.ReadOnly = true;
+            this.dgvCol_Key.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvCol_Duration
+            // 
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_Duration.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvCol_Duration.FillWeight = 30F;
+            this.dgvCol_Duration.HeaderText = "Duration (sec)";
+            this.dgvCol_Duration.Name = "dgvCol_Duration";
+            this.dgvCol_Duration.ReadOnly = true;
+            this.dgvCol_Duration.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvCol_VKCode
+            // 
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            this.dgvCol_VKCode.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvCol_VKCode.FillWeight = 25F;
+            this.dgvCol_VKCode.HeaderText = "VKCode";
+            this.dgvCol_VKCode.Name = "dgvCol_VKCode";
+            this.dgvCol_VKCode.ReadOnly = true;
+            this.dgvCol_VKCode.Visible = false;
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,9 +515,6 @@
         private System.Windows.Forms.Button btn_LoadActions;
         private System.Windows.Forms.Button btn_SaveActions;
         private System.Windows.Forms.ComboBox cb_PlayKey;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_ActionType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Key;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Duration;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lb_LoopInterval;
@@ -506,6 +522,10 @@
         private System.Windows.Forms.Label label_WindowTitle;
         public System.Windows.Forms.TextBox tb_WindowTitle;
         public System.Windows.Forms.TextBox tb_ProcessName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_ActionType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Key;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_Duration;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvCol_VKCode;
     }
 }
 

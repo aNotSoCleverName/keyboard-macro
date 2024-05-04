@@ -68,6 +68,7 @@ namespace Keyboard_Macro
                         writer.WriteAttributeString(xmlType, keyAction.ActionType);
                         writer.WriteAttributeString(xmlKey, keyAction.Key);
                         writer.WriteAttributeString(xmlDuration, keyAction.Duration);
+                        writer.WriteAttributeString(xmlStrVk, keyAction.StrVk);
                         writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
@@ -116,8 +117,9 @@ namespace Keyboard_Macro
 
                         case xmlAction:
                             Class_Action newAction = new Class_Action(reader.GetAttribute(xmlType),
-                                                              reader.GetAttribute(xmlKey),
-                                                              reader.GetAttribute(xmlDuration));
+                                                                      reader.GetAttribute(xmlKey),
+                                                                      reader.GetAttribute(xmlStrVk),
+                                                                      reader.GetAttribute(xmlDuration));
 
                             //Add action to list
                             Class_Action.KeyActions.Add(newAction);
@@ -130,8 +132,9 @@ namespace Keyboard_Macro
                                 newRow.Cells[0].Value = newAction.ActionType;
                                 newRow.Cells[1].Value = newAction.Key;
                                 newRow.Cells[2].Value = newAction.Duration;
+                                newRow.Cells[3].Value = newAction.StrVk;
 
-                                newAction.CleanActionRow(newRow);
+                                newAction.ActionToRow(newRow);
                                 inDgv_Action.Rows.Add(newRow);
                             }
                             break;
@@ -174,6 +177,7 @@ namespace Keyboard_Macro
         const string xmlAction = "Action";
         const string xmlType = "ActionType";
         const string xmlKey = "Key";
+        const string xmlStrVk = "StrVk";
         const string xmlDuration = "Duration";
 
         //Get set

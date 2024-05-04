@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
@@ -81,9 +82,17 @@ namespace Keyboard_Macro
         private void btn_Ok_Click(object sender, EventArgs e)
         {
             // Get values from controls
-            string newActionType = this.cb_ActionType.Text;
-            string newKey = this.tb_Key.Text;
-            string newDuration = this.nud_Duration.Value.ToString();
+            string newActionType, newKey, newStrVk, newDuration;
+            {
+                newActionType = this.cb_ActionType.Text;
+                newKey = this.tb_Key.Text;
+
+                newStrVk = "";
+                if (this.tb_Key.Tag != null)
+                    newStrVk = this.tb_Key.Tag.ToString();
+
+                newDuration = this.nud_Duration.Value.ToString();
+            }
 
             // If action requires key, but key is not set, return
             if (newActionType != Class_Action.Enum_ActionType.Delay.ToString() &&
@@ -98,7 +107,7 @@ namespace Keyboard_Macro
             if (!this.isEditting)
             {
                 //List
-                this.action = new Class_Action(newActionType, newKey, newDuration);
+                this.action = new Class_Action(newActionType, newKey, newStrVk, newDuration);
                 Class_Action.KeyActions.Add(this.action);
 
                 //DGV
@@ -111,13 +120,14 @@ namespace Keyboard_Macro
                 //List
                 this.action.ActionType = newActionType;
                 this.action.Key = newKey;
+                this.action.StrVk = newStrVk;
                 this.action.Duration = newDuration;
 
                 //DGV
                 selectedRow = this.dgv_Action.SelectedRows[0];
             }
 
-            this.action.CleanActionRow(selectedRow);
+            this.action.ActionToRow(selectedRow);
 
             // This has to be done after setting the value. Otherwise, it fucks with the index
             if (!this.isEditting)

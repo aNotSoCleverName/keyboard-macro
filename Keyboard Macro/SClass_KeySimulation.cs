@@ -51,13 +51,9 @@ namespace Keyboard_Macro
 
             while (!IsStopSimulation)
             {
-                Console.WriteLine("REPEAT TIMES: " + repeatTimes.ToString());
-
                 for (int nthKeyAction = 0; nthKeyAction < Class_Action.KeyActions.Count; nthKeyAction++)
                 {
                     Class_Action keyAction = Class_Action.KeyActions[nthKeyAction];
-
-                    Console.WriteLine(keyAction.ActionType + " --- " + nthKeyAction.ToString());
 
                     // Get action type enum from string
                     Class_Action.Enum_ActionType actionType = (Class_Action.Enum_ActionType)Enum.Parse(typeof(Class_Action.Enum_ActionType), keyAction.ActionType);
@@ -66,11 +62,11 @@ namespace Keyboard_Macro
                     switch (actionType)
                     {
                         case Class_Action.Enum_ActionType.Press:
-                            SClass_KeyStroke.PressKey(keyAction.Key);
+                            SClass_KeyStroke.PressKey(keyAction.StrVk);
                             break;
                         case Class_Action.Enum_ActionType.Hold:
                             duration = SClass_KeyStroke.GetDurationInMiliSec(keyAction.Duration);
-                            SClass_KeyStroke.HoldKey(keyAction.Key, duration);
+                            SClass_KeyStroke.HoldKey(keyAction.StrVk, duration);
                             break;
                         case Class_Action.Enum_ActionType.Delay:
                             duration = SClass_KeyStroke.GetDurationInMiliSec(keyAction.Duration);
@@ -88,9 +84,6 @@ namespace Keyboard_Macro
                 if (inIsRepeatFinite &&
                     repeatTimes >= inRepeatTimes + 1)
                 {
-                    //StopSimulation();
-                    //return;
-
                     break;
                 }
             }
