@@ -16,12 +16,7 @@ When the simulation is on, only the active window receives the input.
 
 ![Loop Interval](./Keyboard%20Macro/docs/Images/Loop%20Interval.png)
 
-In this image, the simulation works like this:
-   1. Press "A"
-   2. Delay 1s
-   3. Hold "D" 0.5s
-   4. Wait _Loop Interval_ 0.1s
-   5. Repeat infinitely
+In this image, the simulation works like this: Press "A", delay 1s, hold "D" 0.5s, wait _Loop Interval_ 0.1s, repeat infinitely
 
 4. _Simulation_ - Information about: All _Actions_, _Repeat Times_, _Loop Interval_, and the application to simulate key presses on. A _Simulation_ can be saved as a file so it can be loaded in the future.
 
