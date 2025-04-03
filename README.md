@@ -88,3 +88,6 @@ Currently, there's an issue with the "Stop" button.
 If the delay between _Actions_ or the _Loop Interval_ is too short, the "Stop" button will not be responsive.
 **However, stopping the _Simulation_ with hotkey will work completely fine.**
 So, please set a hotkey for the Play/Stop button.
+
+# Dependencies
+1. InputSimulator by Michael Noonan
