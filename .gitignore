@@ -1,2 +1,10 @@
 .vs
-Keyboard Macro\bin\Debug\Projects
+packages/
+Keyboard Macro/bin/
+Keyboard Macro/obj/
+
+# User-specific settings
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
