@@ -86,7 +86,6 @@ namespace Keyboard_Macro
         private void OnRowRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             this.btn_ClearActions.Enabled = this.dgv_Action.RowCount > 0;
-            this.btn_SaveActions.Enabled = this.dgv_Action.RowCount > 0;
         }
 
         // Opens form to select target process to play macro on

@@ -14,15 +14,9 @@ namespace Keyboard_Macro
     {
         private void btn_SaveActions_Click(object sender, EventArgs e)
         {
-            // Restore dialog init directory
-            this.saveFileDialog1.InitialDirectory = SClass_SaveLoad.CurrentPath;
-
-            // Cancel save
-            if (this.saveFileDialog1.ShowDialog() != DialogResult.OK)
+            bool isCanceled = !ShowFileDialogWithInitDirAndFileName(this.saveFileDialog1, e);
+            if (isCanceled)
                 return;
-
-            // Set dialog init directory
-            SClass_SaveLoad.CurrentPath = this.saveFileDialog1.InitialDirectory;
 
             SClass_SaveLoad.Save(this.saveFileDialog1.FileName,
                                  this.tb_ProcessName.Text, this.tb_WindowTitle.Text,
@@ -33,15 +27,9 @@ namespace Keyboard_Macro
 
         private void btn_LoadActions_Click(object sender, EventArgs e)
         {
-            // Restore dialog init directory
-            this.openFileDialog1.InitialDirectory = SClass_SaveLoad.CurrentPath;
-
-            // Cancel load
-            if (this.openFileDialog1.ShowDialog() != DialogResult.OK)
+            bool isCanceled = !ShowFileDialogWithInitDirAndFileName(this.openFileDialog1, e);
+            if (isCanceled)
                 return;
-
-            // Set dialog init directory
-            SClass_SaveLoad.CurrentPath = this.openFileDialog1.InitialDirectory;
 
             // Cancel load if not clear actions
             if (!this.ClearActions())
@@ -55,7 +43,31 @@ namespace Keyboard_Macro
             this.SetSaveFileToFormText(Path.GetFileName(this.openFileDialog1.FileName));
         }
 
-        void SetSaveFileToFormText(string inFileName)
+        private bool ShowFileDialogWithInitDirAndFileName(FileDialog sender, EventArgs e)
+        {
+            if (!Directory.Exists(SClass_SaveLoad.CurrentPath))
+            {
+                Directory.CreateDirectory(SClass_SaveLoad.CurrentPath);
+            }
+
+            // Restore dialog init directory and file name
+            sender.InitialDirectory = SClass_SaveLoad.CurrentPath;
+            sender.FileName = SClass_SaveLoad.CurrentFile == "" ?
+                              "untitled" :
+                              Path.GetFileName(SClass_SaveLoad.CurrentFile);
+
+            // Cancel save
+            if (sender.ShowDialog() != DialogResult.OK)
+                return false;
+
+            // Set dialog init directory and file name
+            SClass_SaveLoad.CurrentPath = sender.InitialDirectory;
+            SClass_SaveLoad.CurrentFile = sender.FileName;
+
+            return true;
+        }
+
+        private void SetSaveFileToFormText(string inFileName)
         {
             this.Text = Form_Main.appName + " - " + inFileName;
         }
